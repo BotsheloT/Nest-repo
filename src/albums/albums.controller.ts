@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, NotFoundException, Param, Post, Put, Query} from '@nestjs/common';
+import { Body, Controller, Delete, Get, NotFoundException, Param, ParseIntPipe, Post, Put, Query, ValidationPipe} from '@nestjs/common';
 import { AlbumsService } from './albums.service';
 import { CreateAlbumsDto } from './dto/create-albums.dto';
 import { UpdateAlbumsDto } from './dto/update-albums.dto';
@@ -16,9 +16,9 @@ export class AlbumsController {
         }
 
     @Get(':id')
-        getSpecificAlbum(@Param('id') id:string){
+        getSpecificAlbum(@Param('id', ParseIntPipe) id:number){
             try{
-                return this.albumsService.getAlbum(+id)
+                return this.albumsService.getAlbum(id)
             }catch(err){
                 throw new NotFoundException();
             }
@@ -26,7 +26,7 @@ export class AlbumsController {
         }
 
     @Post()
-        addAlbum(@Body() createAlbumDto: CreateAlbumsDto){
+        addAlbum(@Body(new ValidationPipe()) createAlbumDto: CreateAlbumsDto){
             return this.albumsService.createAlbum(createAlbumDto);   
         }
 
