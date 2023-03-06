@@ -1,4 +1,4 @@
 export class CreateAlbumsDto {
     name: string; 
-    releaseYear: number;
+    genre: 'Hip Hop | Jazz';
 }
