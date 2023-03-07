@@ -24,7 +24,7 @@ export class AlbumsService {
         if(!album){
             throw new Error('Album not found');
         }
-        return album
+        return album;
       }
 
       createAlbum(createAlbumDto: CreateAlbumsDto){
