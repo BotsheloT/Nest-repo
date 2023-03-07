@@ -5,24 +5,21 @@ import { PlaylistsService } from './playlists.service';
 
 @Controller('playlists')
 export class PlaylistsController {
-  constructor(private readonly playlistsService: PlaylistsService) {}
+  constructor(private readonly playlistsService: PlaylistsService) {}  
 
   @Get()
-    getPlaylists(@Query('theme') theme:string){
-      return [];
+    getPlaylists(){
+      return this.playlistsService.getPlaylists();
     }
 
     @Get(':id')
       getPlaylist(@Param('id') id:number){
-      return {};
+      return this.playlistsService.getOnePlaylist(id);
     }
 
     @Post()
       addPlaylist(@Body() createPlaylistDto: CreatePlaylistDto){
-        return{
-          name: createPlaylistDto.name,
-          theme: createPlaylistDto.theme
-        }
+        return this.playlistsService.addPlaylist(createPlaylistDto)
     }    
 
     @Put('id')
