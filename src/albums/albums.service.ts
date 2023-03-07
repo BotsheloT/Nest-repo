@@ -29,8 +29,9 @@ export class AlbumsService {
 
       createAlbum(createAlbumDto: CreateAlbumsDto){
         let newAlbum ={
-            ...createAlbumDto,
             id: Date.now(),
+            ...createAlbumDto
+            
         };
         this.albums.push(newAlbum);        
         return newAlbum;
