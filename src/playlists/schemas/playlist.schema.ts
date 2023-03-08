@@ -9,7 +9,7 @@ export class playlist{
     name: string;
 
     @Prop()
-    genre:string;
+    theme:string;
 }
 
 export const playlistSchema = SchemaFactory.createForClass(playlist);

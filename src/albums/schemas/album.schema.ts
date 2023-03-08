@@ -5,6 +5,11 @@ export type albumDocument = HydratedDocument<album>;
 
 @Schema()
 export class album{
+    @Prop()
+    name: string;
+
+    @Prop()
+    genre:string;
 
 }
 
