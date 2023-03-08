@@ -6,7 +6,7 @@ import { AlbumsModule } from './albums/albums.module';
 import { PlaylistsModule } from './playlists/playlists.module';
 
 @Module({
-  imports: [AlbumsModule, PlaylistsModule],
+  imports: [AlbumsModule, PlaylistsModule, MongooseModule.forRoot('mongodb://localhost/nest')],
   controllers: [AppController],
   providers: [AppService],
 })
