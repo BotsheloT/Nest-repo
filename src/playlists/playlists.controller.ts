@@ -1,4 +1,5 @@
-import { Body, Controller, Get, Param, Put, Post, Query, Delete } from '@nestjs/common';
+import { Body, Controller, Get, Param, Put, Post, Query, Delete, ParseIntPipe } from '@nestjs/common';
+import { NotFoundError } from 'rxjs';
 import { CreatePlaylistDto } from './dto/create-playlists.dto';
 import { UpdatePlaylistDto } from './dto/update-playlist.dto';
 import { PlaylistsService } from './playlists.service';
@@ -13,8 +14,9 @@ export class PlaylistsController {
     }
 
     @Get(':id')
-      getPlaylist(@Param('id') id:number){
-      return this.playlistsService.getOnePlaylist(id);
+      getPlaylist(@Param('id', ParseIntPipe) id:number){        
+        return this.playlistsService.getOnePlaylist(id);          
+     
     }
 
     @Post()
@@ -24,16 +26,11 @@ export class PlaylistsController {
 
     @Put('id')
       editPLaylist(@Param() id:number, updatePlaylistDto: UpdatePlaylistDto){
-        return {
-          id,
-          name: updatePlaylistDto
-        };
+        return this.playlistsService.editPlaylist(+id, updatePlaylistDto);
     }
 
     @Delete('id')
-      deletePlaylist(@Param() id:number){
-        return{
-          id
-        }
+      deletePlaylist(@Param() id:string){
+        return this.playlistsService.deletePlaylist(+id);
       }
 }

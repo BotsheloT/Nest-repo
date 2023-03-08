@@ -1,11 +1,12 @@
 import { Injectable } from '@nestjs/common';
 import { CreatePlaylistDto } from './dto/create-playlists.dto';
+import { UpdatePlaylistDto } from './dto/update-playlist.dto';
 
 @Injectable()
 export class PlaylistsService {
     private playlists = [
-        {id: 0, name: "11:11", theme: "Chill"},
-        {id: 1, name: "Madness", theme: "Hype"}
+        {id: 0, name: '11:11', theme: 'Chill'},
+        {id: 1, name: 'Madness', theme: 'Hype'}
     ]
 
     getPlaylists(){
@@ -13,7 +14,7 @@ export class PlaylistsService {
     }
 
     getOnePlaylist(id: number){
-        let playlist = this.playlists.find((playlist) => playlist.id = id);
+        let playlist = this.playlists.find((playlist) => playlist.id === id);
 
         if(!playlist){
             throw new Error('Playlist not found');
@@ -33,11 +34,20 @@ export class PlaylistsService {
         return playlist;
     }
 
-    editPlaylist(){
-
+    editPlaylist(id: number, updatePlaylistDto: UpdatePlaylistDto){
+        this.playlists = this.playlists.map((playlist) => {
+            if(playlist.id == id){
+                return{...playlist, updatePlaylistDto}
+            }
+            return playlist;
+        });
     }
 
-    deletePlaylist(){
+    deletePlaylist(id: number){
+        let deleteItem = this.getOnePlaylist(id);
 
+        this.playlists = this.playlists.filter((playlist) => playlist.id !== id);
+
+        return deleteItem;
     }
 }
