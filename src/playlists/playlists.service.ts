@@ -1,4 +1,7 @@
+import { Model } from 'mongoose';
 import { Injectable } from '@nestjs/common';
+import { InjectModel } from '@nestjs/mongoose';
+import {playlist, playlistSchema} from './schemas/playlist.schema';
 import { CreatePlaylistDto } from './dto/create-playlists.dto';
 import { UpdatePlaylistDto } from './dto/update-playlist.dto';
 
