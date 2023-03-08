@@ -14,7 +14,7 @@ export class PlaylistsController {
     }
 
     @Get(':id')
-      getPlaylist(@Param('id', ParseIntPipe) id:number){        
+      getPlaylist(@Param('id', ParseIntPipe) id:string){        
         return this.playlistsService.getOnePlaylist(id);          
      
     }
@@ -24,13 +24,13 @@ export class PlaylistsController {
         return this.playlistsService.addPlaylist(createPlaylistDto)
     }    
 
-    @Put('id')
-      editPLaylist(@Param() id:number, updatePlaylistDto: UpdatePlaylistDto){
-        return this.playlistsService.editPlaylist(+id, updatePlaylistDto);
+    @Put(':id')
+      editPLaylist(@Param() id:string, updatePlaylistDto: UpdatePlaylistDto){
+        return this.playlistsService.editPlaylist(id, updatePlaylistDto);
     }
 
-    @Delete('id')
+    @Delete(':id')
       deletePlaylist(@Param() id:string){
-        return this.playlistsService.deletePlaylist(+id);
+        return this.playlistsService.deletePlaylist(id);
       }
 }

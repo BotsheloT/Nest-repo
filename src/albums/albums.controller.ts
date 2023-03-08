@@ -16,7 +16,7 @@ export class AlbumsController {
         }
 
     @Get(':id')
-        getSpecificAlbum(@Param('id', ParseIntPipe) id:number){
+        getSpecificAlbum(@Param('id', ParseIntPipe) id:string){
             try{
                 return this.albumsService.getAlbum(id)
             }catch(err){
