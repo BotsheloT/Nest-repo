@@ -1,12 +1,12 @@
 import { Module } from '@nestjs/common';
+import { MongooseModule } from '@nestjs/mongoose';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AlbumsModule } from './albums/albums.module';
 import { PlaylistsModule } from './playlists/playlists.module';
-import { LikedSongsModule } from './liked-songs/liked-songs.module';
 
 @Module({
-  imports: [AlbumsModule, PlaylistsModule, LikedSongsModule],
+  imports: [MongooseModule.forRoot('mongodb://localhost/nest'),AlbumsModule, PlaylistsModule],
   controllers: [AppController],
   providers: [AppService],
 })

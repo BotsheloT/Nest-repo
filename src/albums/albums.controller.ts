@@ -31,7 +31,7 @@ export class AlbumsController {
         }
 
     @Put(':id')
-        editAlbum(@Param('id') id:string, @Body() updateAlbumsDto: UpdateAlbumsDto){
+        updateAlbum(@Param('id') id:string, @Body() updateAlbumsDto: UpdateAlbumsDto){
             return this.albumsService.updateAlbum(+id, updateAlbumsDto);
         }
 
