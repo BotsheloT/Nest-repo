@@ -9,14 +9,12 @@ export class AlbumsController {
     constructor(private readonly albumsService: AlbumsService){}
 
     @Get()
-        getAlbums(@Query('genre') genre:'Hip Hop' | 'Jazz'){
-            //const service = new AlbumsService;   (Instantiated service)         
-            return this.albumsService.getAlbums(genre)
-            
+        getAlbums(@Query('genre') genre:'Hip Hop' | 'Jazz'){                   
+            return this.albumsService.getAlbums(genre);            
         }
 
     @Get(':id')
-        getSpecificAlbum(@Param('id', ParseIntPipe) id:string){
+        getSpecificAlbum(@Param('id') id:string){
             try{
                 return this.albumsService.getAlbum(id)
             }catch(err){
@@ -37,7 +35,7 @@ export class AlbumsController {
 
     @Delete(':id')
         deleteAlbum(@Param('id') id:string){
-            return this.albumsService.removeAlbum(id)
+            return this.albumsService.removeAlbum(id);
         }
     
 }
