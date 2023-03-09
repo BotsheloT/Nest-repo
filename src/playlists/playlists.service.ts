@@ -27,6 +27,6 @@ export class PlaylistsService {
     }
 
     deletePlaylist(id: string){
-       return this.playlistModel.findByIdAndDelete(id).exec();
+       return this.playlistModel.findByIdAndRemove(id).exec();
     }
 }

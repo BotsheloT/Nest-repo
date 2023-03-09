@@ -14,7 +14,7 @@ export class PlaylistsController {
     }
 
     @Get(':id')
-      getPlaylist(@Param('id', ParseIntPipe) id:string){        
+      getPlaylist(@Param('id') id:string){        
         return this.playlistsService.getOnePlaylist(id);          
      
     }
@@ -25,7 +25,7 @@ export class PlaylistsController {
     }    
 
     @Put(':id')
-      editPLaylist(@Param() id:string, updatePlaylistDto: UpdatePlaylistDto){
+      editPLaylist(@Param() id:string, @Body() updatePlaylistDto: UpdatePlaylistDto){
         return this.playlistsService.editPlaylist(id, updatePlaylistDto);
     }
 
