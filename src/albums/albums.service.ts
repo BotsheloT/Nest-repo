@@ -24,11 +24,11 @@ export class AlbumsService {
        return this.albumModel.create(createAlbumDto);
       }
 
-      updateAlbum(id: number, updateAlbumsDto: UpdateAlbumsDto){
+      updateAlbum(id: string, updateAlbumsDto: UpdateAlbumsDto){
        return this.albumModel.findByIdAndUpdate(id, updateAlbumsDto).exec();
       }
 
-      removeAlbum(id: number){
+      removeAlbum(id: string){
        return this.albumModel.findByIdAndRemove(id).exec();
       }
 }

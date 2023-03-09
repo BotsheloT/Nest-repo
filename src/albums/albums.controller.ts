@@ -32,12 +32,12 @@ export class AlbumsController {
 
     @Put(':id')
         updateAlbum(@Param('id') id:string, @Body() updateAlbumsDto: UpdateAlbumsDto){
-            return this.albumsService.updateAlbum(+id, updateAlbumsDto);
+            return this.albumsService.updateAlbum(id, updateAlbumsDto);
         }
 
     @Delete(':id')
         deleteAlbum(@Param('id') id:string){
-            return this.albumsService.removeAlbum(+id)
+            return this.albumsService.removeAlbum(id)
         }
     
 }
