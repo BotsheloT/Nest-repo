@@ -6,7 +6,7 @@ import { AlbumsModule } from './albums/albums.module';
 import { PlaylistsModule } from './playlists/playlists.module';
 
 @Module({  
-  imports: [AlbumsModule, PlaylistsModule, MongooseModule.forRoot('mongodb+srv://main:277Black353@cluster0.ypaxhzy.mongodb.net/mediaCenter')],
+  imports: [AlbumsModule, PlaylistsModule, MongooseModule.forRoot('mongodb+srv://main:277Black353@cluster0.ypaxhzy.mongodb.net/musicCenter')],
   controllers: [AppController],
   providers: [AppService],
 })
